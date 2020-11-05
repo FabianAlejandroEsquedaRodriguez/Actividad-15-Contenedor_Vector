@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>//Incluimos la clase vector
+#include <algorithm>
 #include <stdlib.h>
 
 using namespace std;
@@ -15,6 +16,8 @@ int main(){
         cout<<"3. Inicializar"<<endl;
         cout<<"4. Frente"<<endl;
         cout<<"5. Ultimo"<<endl;
+        cout<<"6. Ordenar"<<endl;
+        cout<<"7. Insertar"<<endl;
         cout<<"0. Salir"<<endl;
         cout<<"\nDigita una opcion: ";
         getline(cin, opc);
@@ -67,6 +70,36 @@ int main(){
             else{
                 cout<<"\t\t\tCadena que esta al ultimo en el vector\n\n";
                 cout<<"La cadena que esta el final es: "<<cadenas.back()<<endl;//Este metodo muestra el ultimo elemento del vector
+            }
+        }
+        else if(opc == "6"){
+
+            cout<<"\t\t\tOrdenando los elementos del vector\n";
+            sort(cadenas.begin(), cadenas.end());
+            //Este metodo va a ordenar los elementos.
+            //El primer parametro es el metodo begin(), que va a regresarnos un apuntador a la primera posicion del vector
+            //El segundo parametro es el metodo end(), que nos va a regresar un puntero a la siguiente posicion disponible despues del ultimo elemento 
+
+            //sort(cadenas.begin(), cadenas.end(), greater<string>());//De esta forma va a ordenar de manera descendente
+        }
+        else if(opc == "7"){
+            size_t pos;
+            string str;
+
+            cout<<"\t\t\tInsertar una cadena en una posicion valida\n\n";
+            cout<<"Digita una posicion: ";
+            cin>>pos;
+            cin.ignore();
+            cout<<"Digita la cadena a insertar: ";
+            getline(cin, str);
+
+            if(pos >= cadenas.size()){//Si la posicion es mayor al tamaño del vector
+                cout<<"La posicion no es valida";
+            }
+            else{//Metodo insert() para insertar en una posicion valida
+                cadenas.insert(cadenas.begin()+pos, str);//El primer parametro es el apuntador al inicio mas la posicion que queramos
+                                                        //Esto va a hacer que begin() se recorra esas posiciones
+                                                        //El segundo parametro es el elemento a insertar
             }
         }
         else if(opc == "0"){

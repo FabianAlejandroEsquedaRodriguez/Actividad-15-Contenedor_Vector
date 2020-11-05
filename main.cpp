@@ -18,6 +18,8 @@ int main(){
         cout<<"5. Ultimo"<<endl;
         cout<<"6. Ordenar"<<endl;
         cout<<"7. Insertar"<<endl;
+        cout<<"8. Eliminar"<<endl;
+        cout<<"9. Eliminar Ultimo"<<endl;
         cout<<"0. Salir"<<endl;
         cout<<"\nDigita una opcion: ";
         getline(cin, opc);
@@ -35,7 +37,7 @@ int main(){
         else if(opc == "2"){
             cout<<"\t\t\tMostrar los elementos en el vector\n\n\n";
             for(size_t i=0; i<cadenas.size(); i++){//size() es un metodo que devuelve la cantidad de elementos del vector
-                cout<<cadenas[i]<<" , ";
+                cout<<cadenas[i]<<", ";
             }
             cout<<endl;
         }
@@ -100,6 +102,31 @@ int main(){
                 cadenas.insert(cadenas.begin()+pos, str);//El primer parametro es el apuntador al inicio mas la posicion que queramos
                                                         //Esto va a hacer que begin() se recorra esas posiciones
                                                         //El segundo parametro es el elemento a insertar
+            }
+        }
+        else if(opc == "8"){
+            size_t pos;
+
+            cout<<"\t\t\tEliminar un elemento en una posicion valida\n\n";
+            cout<<"Digita una posicion a eliminar: ";
+            cin>>pos;
+            cin.ignore();
+
+            if(pos >= cadenas.size()){
+                cout<<"La posicion no es valida";
+            }
+            else{
+                cadenas.erase(cadenas.begin()+pos);//Metodo erase(), tiene un parametro, la posicion que queremos borrar
+                                                    //El begin() apunta a la primera posicion del vector y le va a sumar la posicion que queramos
+            }
+        }
+        else if(opc == "9"){
+            if(cadenas.empty()){
+                cout<<"El vector esta vacio";
+            }
+            else{
+                cout<<"\t\t\tEliminando el ultimo elemento del vector\n\n";
+                cadenas.pop_back();
             }
         }
         else if(opc == "0"){
